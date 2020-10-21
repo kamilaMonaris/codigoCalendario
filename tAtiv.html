@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang ="pt-br">
+<head>
+	<title>TestandoCalendario</title>
+	<link  rel="stylesheet" href="pasta/tDeco.css" type="text/css"/>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<div class = "GeralCalend">
+	<div id = "month"></div>
+	<div id = "dayName"></div>
+	<div id = "dayNun"></div>
+    <div id = "year"></div>
+    <div id ="hoursComple"></div>
+</div>
+
+<script>
+	
+	const lang = navigator.language;
+	let date = new Date();
+
+	
+	let month= date.toLocaleString(lang, {month: 'long'});
+	let dayName = date.toLocaleString(lang, {weekday: 'long'});
+	let dayNun = date.getDate();
+	let year = date.getFullYear();
+
+
+	document.getElementById('month').innerHTML = month;
+	document.getElementById('dayName').innerHTML = dayName;
+	document.getElementById('dayNun').innerHTML = dayNun;
+	document.getElementById('year').innerHTML = year;
+
+	setInterval(clock,1000);
+	function clock(){
+	   let date = new Date();
+	   let hours =  date.getHours();
+	   let minutes = date.getMinutes();
+	   let seconds = date.getSeconds();
+
+
+	   if(hours<10){
+	   	hours="0"+hours;
+	   }
+	   if(minutes<10){
+	   	minutes="0"+minutes;
+	   }
+	   if(seconds<10){
+	   	seconds="0"+seconds;
+	   }
+        if(hours<12){
+	   	hours=hours;
+	   	minutes=minutes;
+	   	seconds=seconds+" A.M.";
+	   }
+	   if(hours>12){
+	   	hours=hours;
+	   	minutes=minutes;
+	   	seconds=seconds+" P.M.";
+	   }
+	  let hoursComple=hours+":"+minutes+":"+seconds;
+	  document.getElementById("hoursComple").innerHTML = hoursComple;
+	 
+	}
+	
+</script>
+</body>
+</html>
+
